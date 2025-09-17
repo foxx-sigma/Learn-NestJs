@@ -9,6 +9,7 @@
 
 ## 📝 Deskripsi Singkat API
 Project ini adalah **API Todo List sederhana** menggunakan **NestJS** .  
+Pada update terbaru, saya menambahkan **Prisma** yang baru saya pelajari.
   
 
 API ini memiliki fungsi:
