@@ -7,8 +7,25 @@ import { PrismaService } from 'prisma/prisma.service';
 export class UsersService {
   constructor(private prisma: PrismaService) {}
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  create(_createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  async create(_createUserDto: CreateUserDto) {
+    try {
+      const { name, email, password } = _createUserDto;
+      const CreateUser = await this.prisma.user.create({
+        data: { name, email, password },
+      });
+      return {
+        success: true,
+        data: CreateUser,
+        message: 'User Created Successfully',
+      };
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      return {
+        success: false,
+        data: null,
+        message: 'Something went wrong: $(error.message)',
+      };
+    }
   }
 
   async findAll() {
